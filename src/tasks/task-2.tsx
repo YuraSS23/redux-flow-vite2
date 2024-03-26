@@ -1,3 +1,6 @@
+import React from 'react'
+import { PropsWithChildren } from 'react'
+
 type MyComponentProps = {
   items: any[]
   defaultItem: any
@@ -7,7 +10,7 @@ function MyComponent(props: MyComponentProps) {
   return <p>some content</p>
 }
 
-const App = () => {
+const App:React.FC<PropsWithChildren<MyComponentProps>> = () => {
   const users: User[] = [
     { name: 'Bilbo', age: 111 },
     { name: 'Frodo', age: 33 },
