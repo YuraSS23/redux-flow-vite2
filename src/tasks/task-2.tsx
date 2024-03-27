@@ -1,16 +1,16 @@
 import React from 'react'
-import { PropsWithChildren } from 'react'
 
-type MyComponentProps = {
-  items: any[]
-  defaultItem: any
+type MyComponentProps<T> = {
+  items: T[]
+  defaultItem: T
 }
-function MyComponent(props: MyComponentProps) {
+
+function MyComponent<T>(props: MyComponentProps<T>) {
   console.log(props)
   return <p>some content</p>
 }
 
-const App:React.FC<PropsWithChildren<MyComponentProps>> = () => {
+const App = () => {
   const users: User[] = [
     { name: 'Bilbo', age: 111 },
     { name: 'Frodo', age: 33 },
@@ -18,8 +18,8 @@ const App:React.FC<PropsWithChildren<MyComponentProps>> = () => {
 
   return (
     <>
-      <MyComponent items={['react', 'typescript']} defaultItem={9} />
-      <MyComponent items={users} defaultItem={'JUST STRING'} />
+      <MyComponent items={['react', 'typescript']} defaultItem={'9'} />
+      <MyComponent items={users} defaultItem={{name: 'Bob', age: 54}} />
     </>
   )
 }
